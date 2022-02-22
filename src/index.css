@@ -141,7 +141,7 @@ Quiz
 */
 
 main {
-  min-height: 100vh;
+  min-height: 138vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,15 +167,21 @@ main {
   display: block;
   width: 100%;
   margin: 0.75rem auto;
-  background: var(--clr-primary-7);
+  background: linear-gradient(to right, #0099f7, #f11712);
+  /* background: var(--clr-primary-7); */
   border-radius: var(--radius);
-  border-color: transparent;
-  color: var(--clr-black);
+
+  /* border-color: transparent; */
+  border-color: linear-gradient(#f9f047, #0fd850);
+  border-width: 25%;
+  color: white;
   letter-spacing: var(--spacing);
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 0;
   transition: var(--transition);
+  clip-path: polygon(11% 0, 90% 0, 100% 50%, 90% 100%, 11% 100%, 0% 50%);
+  
 }
 @media screen and (min-width: 576px) {
   .answer-btn {
@@ -185,6 +191,7 @@ main {
 .answer-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-white);
+  
 }
 .correct-answers {
   font-size: 1rem;
@@ -212,11 +219,16 @@ main {
   color: var(--clr-black);
   transition: var(--transition);
   cursor: pointer;
+
+  
 }
+
 .next-question:hover {
   background: #805900;
   color: #ffb100;
+  
 }
+
 /*
 =============== 
 Form
@@ -308,4 +320,30 @@ Loading
 }
 .close-btn {
   margin-right: auto;
+}
+.D {
+  
+  position: absolute;
+    top: 20%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+    text-transform: uppercase;
+    font-family: verdana;
+    font-size: 1.9em;
+    font-weight: 500;
+    color: #1f430e;
+    text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+        1px 7px 1px #919191,
+        1px 8px 1px #919191,
+        1px 9px 1px #919191,
+        1px 10px 1px #919191,
+    1px 18px 6px rgba(16,16,16,0.4),
+    1px 22px 10px rgba(16,16,16,0.2),
+    1px 25px 35px rgba(16,16,16,0.2),
+    1px 30px 60px rgba(16,16,16,0.4);
 }

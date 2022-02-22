@@ -1,16 +1,19 @@
 import axios from 'axios'
 import React, { useState, useContext, useEffect } from 'react'
 
+// eslint-disable-next-line no-unused-vars
 const table = {
   sports: 21,
   history: 23,
   politics: 24,
 }
 
+// eslint-disable-next-line no-unused-vars
 const API_ENDPOINT = 'https://opentdb.com/api.php?'
 
+// eslint-disable-next-line no-unused-vars
 const url = ''
-const tempUrl = 'https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple'
+const tempUrl = 'https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple'
 
 const AppContext = React.createContext()
 
@@ -43,6 +46,32 @@ const AppProvider = ({ children }) => {
       setWaiting(true)
     }
   }
+  const nextQuestion = () => {
+    setIndex((oldIndex)=> {
+      const index = oldIndex + 1
+      if (index > questions.length - 1) {
+        openModal()
+        return 0
+      } else {
+
+        return index
+      }
+    })
+  }
+  const checkAnswer = value => {
+    if (value) {
+      setCorrect((oldState)=> oldState + 1)
+    }
+    nextQuestion()
+  }
+  const openModal = () =>{
+    setIsModalOpen(true)
+  }
+  const closeModal = () =>{
+    setWaiting(true)
+    setCorrect(0)
+    setIsModalOpen(false)
+  }
   useEffect(() => {
     fetchQuestions(tempUrl)
   }, [])
@@ -54,7 +83,10 @@ const AppProvider = ({ children }) => {
     index,
     correct,
     error,
-    isModalOpen
+    isModalOpen,
+    nextQuestion,
+    checkAnswer,
+    closeModal,
   }}>{children}</AppContext.Provider>
 }
 // make sure use
